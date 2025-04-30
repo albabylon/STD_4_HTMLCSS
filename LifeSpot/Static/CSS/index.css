@@ -19,6 +19,14 @@
     color:lightblue
 }
 
+a {
+    text-decoration-line: none;
+}
+
+.search:focus {
+    outline-color: lightblue;
+}
+
 header {
     color: black;
     padding-left: 1%;
@@ -36,6 +44,7 @@ footer {
     font-size: medium;
     color: dimgrey;
     line-height: 66%;
+    padding-left: 1%;
 }
 
 aside {
@@ -53,6 +62,7 @@ aside {
 
 body {
     padding-left: 11%;
+    position:relative;
 }
 
 /* Комбинированный селектор - применяется ко всем элементам */
