@@ -40,6 +40,13 @@ namespace LifeSpot
                     var html = await File.ReadAllTextAsync(viewPath);
                     await context.Response.WriteAsync(html);
                 });
+
+                endpoints.MapGet("/Static/Scripts/index.js", async context =>
+                {
+                    var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "Scripts", "index.js");
+                    var html = await File.ReadAllTextAsync(viewPath);
+                    await context.Response.WriteAsync(html);
+                });
             });
         }
     }
