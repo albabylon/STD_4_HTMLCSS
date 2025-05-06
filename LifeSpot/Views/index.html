@@ -5,13 +5,18 @@
     <title>LifeSpot</title>
     <link href="../Static/CSS/index.css" rel="stylesheet" type="text/css" />
     <script src="../Static/Scripts/index.js"></script>
+    <script defer src="../Static/Scripts/testing.js"></script>
 </head>
 
 <body>
     <header id="header-index">
         <h1>LifeSpot - прямые трансляции с улиц</h1>
         <p>Покажем, что происходит прямо сейчас</p>
-        <input class="search" placeholder="Введите текст для поиска" />
+        <input class="search" 
+               placeholder="Введите текст для поиска" 
+               type="text" 
+               oninput="handlInput(this)"
+               size=50/>
         <button>Поиск</button>
     </header>
 

@@ -225,3 +225,145 @@ Math - для математических действий
 
 const result = Math.log(Math.PI);
 console.log(result);
+
+
+
+!!!Массивы!!!
+Массивы в JavaScript могут состоять из данных различного типа. 
+Это значит, что может быть массив, состоящий только из чисел — [1, 2, 3], 
+а может быть массив, состоящий из абсолютно всех типов данных в разных комбинациях — [true, 'string', 123, false, null].
+
+В JavaScript массивы являются подмножеством объектов, то есть любой массив — это объект
+
+Как определить что элемент массив:
+1. Наличие свойства length
+
+Свойство length — встроенное. Оно возвращает количество элементов массива. 
+В большинстве случаев типа object и наличия свойства length достаточно, чтобы считать элемент массивом.
+
+const obj =  {a: 1, b: 2};
+console.log(obj.length);
+undefined
+
+const arr =  [1, 2];
+console.log(arr.length);
+2
+
+2. Метод Array.isArray()
+
+const obj =  {a: 1, b: 2};
+console.log(Array.isArray(obj)) ;
+false
+
+const arr =  [1, 2];
+console.log(Array.isArray(arr));
+true
+
+
+!!DEBUGGING
+Чтобы произвести дебаг нужно в месте остановки написать слово debugger и перейти в бразуере на влкадку Source
+
+
+!!Методы работы с массивами
+Мутирующие методы изменяют исходный массив, а немутирующие — не изменяют.
+
+Мутирующие методы:
+.push(...items), .unshift(...items)	- Добавляют элементы в конец/начало массива.
+.pop(), .shift() - Удаляют элемент из конца/начала массива.
+.splice(index[, deleteCount, elem1, ..., elemN]) - Удаляет и добавляет элементы.
+.concat() - Склеивает массивы.
+
+Немутирующие методы:
+.map(cb) - Перебирающий метод массива, принимающий как аргумент функцию cb.
+Он вызывает функцию для каждого элемента массива и возвращает массив результатов выполнения этой функции.
+
+let arr = [1,2,3];
+let result = arr.map(function(item, index, array) {
+
+  return item + 1
+
+});
+console.log(arr);
+[1, 2, 3]
+console.log(result);
+[2, 3, 4]
+
+
+.reduce(cb) или reduceRight(cb)	- Эти методы используются для вычисления какого-нибудь единого значения на основе всего массива.
+
+let arr = [1, 2, 3];
+let result = arr.reduce(function(sum,  item, index, array){
+
+  return sum + item
+
+}, 0);
+console.log(result); 
+6
+
+
+
+!!!Цикл!!!
+
+1. Цикл for
+for ([initialization]; [condition]; [incrementExpression]) {
+
+    Statement
+
+}
+
+for (let i = 0; i < 10; i = i + 1) {
+
+    console.log(i)
+
+}
+
+бесконечный цикл:
+for (;;) {
+
+    console.log('infinity loop')
+
+}
+
+
+
+2. Цикл while
+
+while (condition) {
+
+      Statement
+}
+
+let i = 0;
+while (i < 10) {
+     i = i + 1
+     console.log(i)
+}
+
+бесконечный цикл:
+while (true) {
+
+    console.log('infinity loop')
+
+}
+
+
+3. Цикл do...while - особенность в том, что он выполнится по крайней мере один раз, даже если условие ложно.
+
+let i = 0;
+do {
+    i = i + 1
+    console.log(i)
+} while (i < 10)
+
+
+4. Кроме этого, существует специальный метод массива:
+
+.forEach(), который является мутирующим методом массива
+.map(), который является немутирующим (его мы рассмотрели ранее).
+
+arr.forEach(function(item, index, array) {
+
+  // возвращается новое значение вместо элемента
+
+});
+
