@@ -1,11 +1,26 @@
-﻿let age = prompt("Укажите сколько вам лет");
+﻿let userInfo = new Map();
+let userAgent = window.navigator.userAgent;
+userInfo.set('userAgent', userAgent);
+
+let age = prompt("Укажите сколько вам лет");
+userInfo.set('age', age);
+
 if (age >= 18) {
-    alert("Приветствуем на LifeSpot " + new Date().toLocaleString());
+
+    let startDate = new Date().toLocaleString();
+    userInfo.set('startDate', startDate);
+
+    alert("Приветствуем на LifeSpot. Время входа:\n" + startDate);
 }
 else {
     alert("Сайт предназначен для лиц старше 18 лет");
     window.location.href = "http://www.google.com"
 }
+
+for (let info of userInfo) {
+    console.log(info);
+}
+
 
 function handlInput(element) {
 
