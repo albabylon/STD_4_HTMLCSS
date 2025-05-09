@@ -1,30 +1,33 @@
-﻿let userInfo = new Map();
-let userAgent = window.navigator.userAgent;
-userInfo.set('userAgent', userAgent);
+﻿function handleSession() {
 
-let age = prompt("Укажите сколько вам лет");
-userInfo.set('age', age);
+    let userInfo = new Map();
+    let userAgent = window.navigator.userAgent;
+    userInfo.set('userAgent', userAgent);
 
-if (age >= 18) {
+    let age = prompt("Укажите сколько вам лет");
+    userInfo.set('age', age);
 
-    let startDate = new Date().toLocaleString();
-    userInfo.set('startDate', startDate);
+    if (age >= 18) {
 
-    alert("Приветствуем на LifeSpot. Время входа:\n" + startDate);
+        let startDate = new Date().toLocaleString();
+        userInfo.set('startDate', startDate);
+
+        alert("Приветствуем на LifeSpot. Время входа:\n" + startDate);
+    }
+    else {
+        alert("Сайт предназначен для лиц старше 18 лет");
+        window.location.href = "http://www.google.com"
+    }
+
+    for (let info of userInfo) {
+        console.log(info);
+    }
 }
-else {
-    alert("Сайт предназначен для лиц старше 18 лет");
-    window.location.href = "http://www.google.com"
-}
 
-for (let info of userInfo) {
-    console.log(info);
-}
+function filtredInput(element) {
 
-
-function handlInput(element) {
-
-    let enteredText = document.getElementsByTagName('input')[0].value.toLowerCase();
+    //let enteredText = document.getElementsByTagName('input')[0].value.toLowerCase();
+    let enteredText = element.value.toLowerCase();
 
     let videoElements = document.getElementsByClassName('video-container');
 
