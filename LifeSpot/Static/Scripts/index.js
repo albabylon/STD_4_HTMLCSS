@@ -1,27 +1,36 @@
-﻿function handleSession() {
+﻿let session = new Map();
 
-    let userInfo = new Map();
+function handleSession() {
+
     let userAgent = window.navigator.userAgent;
-    userInfo.set('userAgent', userAgent);
+    session.set('userAgent', userAgent);
+
+    let startDate = new Date().toLocaleString();
+    session.set('startDate', startDate);
+
+}
+
+function checkAge() {
 
     let age = prompt("Укажите сколько вам лет");
-    userInfo.set('age', age);
+    session.set('age', age);
 
     if (age >= 18) {
-
-        let startDate = new Date().toLocaleString();
-        userInfo.set('startDate', startDate);
-
-        alert("Приветствуем на LifeSpot. Время входа:\n" + startDate);
+        alert("Приветствуем на LifeSpot. Время входа:\n" + new Date().toLocaleString());
     }
     else {
         alert("Сайт предназначен для лиц старше 18 лет");
         window.location.href = "http://www.google.com"
     }
 
-    for (let info of userInfo) {
-        console.log(info);
+}
+
+let sessionLog = function logSession() {
+
+    for (let result of session) {
+        console.log(result)
     }
+
 }
 
 function filtredInput(element) {
