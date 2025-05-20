@@ -1,0 +1,64 @@
+!!!÷икл!!!
+
+1. ÷икл for
+for ([initialization]; [condition]; [incrementExpression]) {
+
+    Statement
+
+}
+
+for (let i = 0; i < 10; i = i + 1) {
+
+    console.log(i)
+
+}
+
+бесконечный цикл:
+for (;;) {
+
+    console.log('infinity loop')
+
+}
+
+
+
+2. ÷икл while
+
+while (condition) {
+
+      Statement
+}
+
+let i = 0;
+while (i < 10) {
+     i = i + 1
+     console.log(i)
+}
+
+бесконечный цикл:
+while (true) {
+
+    console.log('infinity loop')
+
+}
+
+
+3. ÷икл do...while - особенность в том, что он выполнитс€ по крайней мере один раз, даже если условие ложно.
+
+let i = 0;
+do {
+    i = i + 1
+    console.log(i)
+} while (i < 10)
+
+
+4.  роме этого, существует специальный метод массива:
+
+.forEach(), который €вл€етс€ мутирующим методом массива
+.map(), который €вл€етс€ немутирующим (его мы рассмотрели ранее).
+
+arr.forEach(function(item, index, array) {
+
+  // возвращаетс€ новое значение вместо элемента
+
+});

@@ -24,6 +24,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JavaScript", "JavaScript", 
 	ProjectSection(SolutionItems) = preProject
 		IntroductionJavaScript.txt = IntroductionJavaScript.txt
 		JavaScript.txt = JavaScript.txt
+		JavaScript_Array.txt = JavaScript_Array.txt
+		JavaScript_Functions.txt = JavaScript_Functions.txt
+		JavaScript_Loop.txt = JavaScript_Loop.txt
+		JavaScript_Objects.txt = JavaScript_Objects.txt
 	EndProjectSection
 EndProject
 Global
