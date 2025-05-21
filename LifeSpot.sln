@@ -28,6 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JavaScript", "JavaScript", 
 		JavaScript_Functions.txt = JavaScript_Functions.txt
 		JavaScript_Loop.txt = JavaScript_Loop.txt
 		JavaScript_Objects.txt = JavaScript_Objects.txt
+		JavaScript_Prototype.txt = JavaScript_Prototype.txt
 	EndProjectSection
 EndProject
 Global
