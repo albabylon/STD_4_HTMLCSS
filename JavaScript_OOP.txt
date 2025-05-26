@@ -28,3 +28,166 @@ This является объектом, который ссылается на саму функцию.
 
 Стрелочные функции не содержат собственный контекст this, 
 а используют значение this окружающего контекста. Поэтому стрелочные функции не могут быть функцией-конструктором.
+
+
+
+!!!ФУНКЦИЯ-КОНСТРУКТОР!!!
+
+Когда мы хотим создать экземпляр какого-то объекта, мы можем создать его через Object.create и передать туда прототип, 
+а затем расширить, как это делалось ранее.
+
+Наиболее распространенным способом создавать экземпляры какого-либо объекта является использование функции-конструктора. 
+Функция-конструктор используется для того, чтобы создавать множество однотипных объектов, обладающих определенными свойствами.
+
+Их принято именовать с большой буквы.
+
+По сути как класс в си-шарп только тут через функцию
+
+function Candy(weight){
+  this.tasty = 'delicious',
+  this.getWeight = function(){
+    console.log(`Weight is ${weight} g`)
+  }
+}
+
+const twix = new Candy(47); - создание нового экземпляра
+const snickers = new Candy(50); - создание нового экземпляра
+
+twix.getWeight()
+snickers.getWeight()
+
+Можно вынести функцию(метод) за скобки через prototype. 
+Таким образом экономится память, так как при создании каждого экземпляра память забивается, е
+сли через prototype функция создается один раз:
+
+Candy.prototype.function(weight) {
+    console.log(`Weight is ${weight} g`)
+  }
+
+Наследование:
+function ChocoCandy(name, choco){
+    this.name = name,
+    this.choco = choco
+}
+
+ChocoCandy.prototype = new Candy() - наследуем ChocoCandy от Candy
+
+
+Полиморфизм:
+ChocoCandy.prototype.getWeight = function(weight) {
+    console.log(`Candy weight is ${weight} g`)
+  }
+
+
+
+
+!!!Классы!!!
+
+Классы — это лишь синтаксический сахар* над обычным прототипным наследованием. Это очень важный момент.
+Итак, ключевое слово class определяет экземпляр. Принято именовать их с большой буквы.
+
+class Parent {
+ constructor(ownCity) {
+     this.ownCity = ownCity;
+     this.hasFlat = true;
+ }
+
+ getInfo(){
+    console.log(`I live in the ${this.ownCity}`)
+}
+
+}
+
+ - Запись class Parent создает специальную функцию с именем Parent;
+ - Constructor определяет сигнатуру функции и ее тело (то, что записывалось через this.PROPERTY для функции-конструктора)
+
+
+Сравним аналогичную запись для функции-конструктора:
+function Parent (ownCity) {
+ this.ownCity = ownCity,
+ this.hasFlat = true;
+}
+
+Parent.prototype.getInfo(){
+ console.log(`I live in the ${this.ownCity}`)
+}
+
+Создание нового экземпляра в обоих случаях происходит с использованием ключевого слова new.
+let parent = new Parent('Moscow');
+
+Нельзя забывать — классы не поднимаются, как функции, поэтому прежде чем создавать экземпляры, объявите конструкцию.
+
+
+
+!!Наследование
+
+Чтобы установить делегирующую связь [[Prototype]] между двумя прототипами функции, используют слово extends.
+
+class Child extends Parent {
+    constructor(isStudent, city, ownCity){
+        super(ownCity); //super - это как base и здесь идет подобие наследование конструкторов в си-шарп
+        this.isStudent = isStudent;
+        this.city = isStudent ? city : ownCity;
+}	
+getInfo() {
+    if (this.isStudent) {
+        return `I live and study in the ${this.city}`
+} else {
+return super.getInfo(); //вызывает базовый метод (родителя)
+}
+}
+}
+
+const student = new Child(true, 'Piter')
+student.getInfo()
+
+const employee = new Child(false, 'New York')
+employee.getInfo()
+
+
+При написании примера вы могли заметить слово super, в которое были внесены свойства родителя. 
+Это ключевое слово автоматически ссылается на родительский конструктор, а внутри себя ссылается на родительский объект, 
+чтобы получить доступ к методу или свойству. 
+
+При обращении к методу через super.method() получается то же самое, что и обращение к Parent.prototype; 
+В конструкторе super указывает на объект Parent.
+
+Для того, чтобы определить, от какого конкретно класса отнаследован потомок, существует оператор instanceof.
+console.log(Child instanseof Parent) // true
+
+
+!!Static
+Ключевое слово static позволяет объявить статические методы и свойства в классе. 
+Они добавляются непосредственно в объект-функцию, а не в объект-прототип.
+
+class Amazing {
+    static cool() {
+        console.log('cool')
+    }
+    wow() {
+        console.log('wow');
+    }
+}
+
+class Wonderful extends Amazing {
+    static awesome() {
+        super.cool();
+        console.log('awesome')
+    }
+
+    great() {
+        super.cool();
+        console.log('great')
+    }
+}
+
+
+Amazing.cool();
+Wonderful.cool();
+Wonderful.awesome();
+
+const instance = new Wonderful();
+
+instance.great();
+instance.awesome();
+instance.cool();
