@@ -26,8 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{5222DB9A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JavaScript", "JavaScript", "{28E7ED7C-4B65-4A8D-BD6A-9F335BBEA30B}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\Desktop\DOM.js = ..\..\..\Desktop\DOM.js
-		..\..\..\Desktop\DOM.txt = ..\..\..\Desktop\DOM.txt
+		DOM.js = DOM.js
+		DOM.txt = DOM.txt
 		IntroductionJavaScript.txt = IntroductionJavaScript.txt
 		JavaScript.txt = JavaScript.txt
 		JavaScript_Array.txt = JavaScript_Array.txt
