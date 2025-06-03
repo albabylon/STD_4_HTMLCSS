@@ -91,3 +91,39 @@ header, footer, body, .video-container {
     padding-left: 1%;
     padding-top: 1%;
 }
+
+/* Слайдер */
+.slider-container {
+    position: relative;
+    margin: auto;
+    max-width: 1000px;
+}
+
+.slider {
+    display: inline-flex;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.prevBtn, .nextBtn {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 16px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.nextBtn {
+    right: 0;
+}
+
+.prevBtn:hover, .nextBtn:hover {
+    background-color: rgba(0,0,0,0.8)
+}

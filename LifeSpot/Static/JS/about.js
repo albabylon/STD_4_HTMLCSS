@@ -42,20 +42,22 @@ function getReviewOld2() {
     }
 }
 
-function Comment() {
-    this.userName = prompt('Введите Ваше имя:');
-    if (this.userName == null) {
-        this.empty = true;
-        return;
-    }
+class Comment {
+    constructor() {
+        this.userName = prompt('Введите Ваше имя:');
+        if (this.userName == null) {
+            this.empty = true;
+            return;
+        }
 
-    this.comment = prompt('Напишите отзыв:');
-    if (this.comment == null) {
-        this.empty = true;
-        return;
-    }
+        this.comment = prompt('Напишите отзыв:');
+        if (this.comment == null) {
+            this.empty = true;
+            return;
+        }
 
-    this.date = new Date().toLocaleString();
+        this.date = new Date().toLocaleString();
+    }
 }
 
 function addComment() {
@@ -117,3 +119,44 @@ const setReview = review => {
     document.getElementsByClassName('reviews')[0].innerHTML +=
         `<div class=\"review-text\"><p><b>${review.userName}</b>  ${review.date} ${likeCounter}</p><p>${review.comment}</p></div>`;
 }
+
+
+
+class Slider {
+    constructor(slider, slides, btnPrev, btnNext) {
+        this.slider = document.querySelector('.slider');
+        this.slides = document.getElementsByClassName('slide');
+        this.btnPrev = document.querySelector('.prevBtn');
+        this.btnNext = document.querySelector('.nextBtn');
+        this.currentIndex = 0;
+
+        this.init();
+    }
+
+    init() {
+        this.btnPrev.addEventListener('click', () => this.slide(this.currentIndex - 1));
+        this.btnNext.addEventListener('click', () => this.slide(this.currentIndex + 1));
+
+        this.updatePosition();
+    }
+
+    slide(index) {
+        const slideCount = this.slides.length;
+
+        if (index < 0) {
+            this.currentIndex = slideCount - 1;
+        } else if (index >= slideCount) {
+            this.currentIndex = 0;
+        } else {
+            this.currentIndex = index;
+        }
+
+        this.updatePosition();
+    }
+
+    updatePosition() {
+        this.slider.style.transform = `translateX(${-this.currentIndex * 100}%)`;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () =>  new Slider());
