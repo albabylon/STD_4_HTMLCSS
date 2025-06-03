@@ -8,7 +8,7 @@ function checkAge(newVisit) {
 
     if (window.sessionStorage.getItem("userAge") >= 18) {
         if(newVisit)
-            alert("Приветствуем на LifeSpot. Время входа:\n" + session.age);
+            alert("Приветствуем на LifeSpot. Время входа:\n" + new Date().toLocaleString());
     }
     else {
         alert("Сайт предназначен для лиц старше 18 лет");
